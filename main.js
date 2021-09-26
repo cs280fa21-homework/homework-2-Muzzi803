@@ -44,14 +44,14 @@ class e {
       return (i += h), (n += d), (t += a), (s += r), (i < h || i > a) && (n < d || n > r) && (t < a || t > h) && (s < r || s > d);
   }
 }
-const t = new Image(40, 40);
-function s(e, t) {
+const invader = new Image(40, 40);
+function s(e, invader) {
   return (e = Math.ceil(e)), (t = Math.floor(t)), Math.floor(Math.random() * (t - e + 1)) + e;
 }
-t.src = "./assets/invader.png";
+invader.src = "./assets/invader.png";
 class i extends e {
   constructor(e, i) {
-      super(s(10, e - 10), 0, 40, 40, t, 0, 0.1 * s(1, 9) + 1, e), (this.JIGGLE_FACTOR = 1), (this.canvasHeight = i);
+      super(s(10, e - 10), 0, 40, 40, invader, 0, 0.1 * s(1, 9) + 1, e), (this.JIGGLE_FACTOR = 1), (this.canvasHeight = i);
   }
   move() {
       (this.dx = Math.floor(Math.random() * (2 * this.JIGGLE_FACTOR + 1)) - this.JIGGLE_FACTOR), super.move(this.dx, this.dy);
@@ -60,21 +60,21 @@ class i extends e {
       return this.y > this.canvasHeight - 100;
   }
 }
-const n = new Image(10, 20);
-n.src = "./assets/missile.png";
+const missile = new Image(10, 20);
+missile.src = "./assets/missile.png";
 class a extends e {
   constructor(e, t) {
-      super(e + 15, t, 10, 20, n, 0, -3), (this.destroyedInvader = null);
+      super(e + 15, t, 10, 20, missle, 0, -3), (this.destroyedInvader = null);
   }
   checkOutOfBounds() {
       return this.y < 0;
   }
 }
-const r = new Image(50, 50);
-r.src = "./assets/tank.png";
+const tank = new Image(50, 50);
+tank.src = "./assets/tank.png";
 class h extends e {
   constructor(e, t, s) {
-      super(e, t, 50, 50, r, 0, 0, s), (this.displacement = 4), document.addEventListener("keydown", this.keyDownHandler.bind(this)), document.addEventListener("keyup", this.keyUpHandler.bind(this));
+      super(e, t, 50, 50, tank, 0, 0, s), (this.displacement = 4), document.addEventListener("keydown", this.keyDownHandler.bind(this)), document.addEventListener("keyup", this.keyUpHandler.bind(this));
   }
   fireMissile() {
       return new a(this.x, this.y);
@@ -106,18 +106,18 @@ class d {
       this.data = this.data.filter((t) => !e.contains(t));
   }
 }
-const o = new Audio("./assets/music.mpeg");
-o.loop = !0;
-const c = new Audio("./assets/explosion.wav"),
-  l = new Audio("./assets/shoot.wav"),
+const bgm= new Audio("./assets/music.mpeg");
+bgm.loop = !0;
+const explosion = new Audio("./assets/explosion.wav"),
+  shoot = new Audio("./assets/shoot.wav"),
   m = new (class {
       getRandomInt(e, t) {
           return (e = Math.ceil(e)), (t = Math.floor(t)), Math.floor(Math.random() * (t - e + 1)) + e;
       }
   })();
-const u = document.getElementById("myCanvas"),
-  y = u.getContext("2d");
-(y.font = "16px Arial"), (y.fillStyle = "#0095DD");
+const gameOver = document.getElementById("myCanvas"),
+  fillStyle = gameOver.getContext("2d");
+(Fill.font = "16px Arial"), (Fill.fillStyle = "#0095DD");
 const v = new (class {
   constructor(e, t) {
       (this.isGameOver = !1),
