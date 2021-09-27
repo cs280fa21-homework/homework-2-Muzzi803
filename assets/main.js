@@ -1,3 +1,4 @@
+import "./style.css";
 !(function () {
   const e = document.createElement("link").relList;
   if (!(e && e.supports && e.supports("modulepreload"))) {
